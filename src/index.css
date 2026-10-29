@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D4AF37;
+  --color-gold-light: #F7E7C4;
+  --color-gold-mid: #C99E5D;
+  --color-gold-dark: #8C6D4F;
+  --color-navy: #0F172A;
+  --color-navy-dark: #0A0E1A;
+  --color-navy-deep: #060913;
+  --color-navy-surface: #0D1527;
+  --color-navy-card: #111A30;
+  --color-navy-border: #1E293B;
+
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Montserrat', sans-serif;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #060913;
+    color: #F8FAFC;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #060913;
+    color: #F8FAFC;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #D4AF37;
+    color: #000000;
+  }
+
+  :focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 3px;
+  }
+
+  section[id],
+  footer[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+    max-width: 1440px;
+  }
+}
+
+@layer utilities {
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(212, 175, 55, 0.15);
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Horizontal showcase track: native swipe fallback on touch */
+  .h-track {
+    overflow-x: auto;
+    scroll-padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+  }
+  .h-track > * {
+    scroll-snap-align: start;
+  }
+  .h-track.is-pinned {
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+}
